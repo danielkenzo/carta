@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 350px;
+            margin: auto;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #f9f9f9;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .yes-btn {
+            background-color: green;
+            color: white;
+        }
+        .no-btn {
+            background-color: red;
+            color: white;
+            position: absolute;
+        }
+        #gif-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎉 Convite Especial 🎉</h2>
+        <p><strong>Data:</strong> [Escolha a data]</p>
+        <p><strong>Horário:</strong> [Escolha o horário]</p>
+        <p>🔥 O quão bom foi esse convite? 🔥</p>
+        <input type="range" min="0" max="10" step="1" id="rating"> <span id="ratingValue">5</span>/10
+        
+        <div id="gif-container">
+            <img id="gif" src="gif1.gif" alt="Convite inicial" width="200">
+        </div>
+        
+        <div class="buttons">
+            <button class="yes-btn" onclick="changeGif()">Sim</button>
+            <button class="no-btn" onmouseover="moveNoButton()">Não</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("rating").addEventListener("input", function() {
+            document.getElementById("ratingValue").textContent = this.value;
+        });
+
+        function moveNoButton() {
+            let noButton = document.querySelector(".no-btn");
+            let maxX = window.innerWidth - noButton.offsetWidth - 20;
+            let maxY = window.innerHeight - noButton.offsetHeight - 20;
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+
+        function changeGif() {
+            document.getElementById("gif").src = "gif2.gif";
+            alert('Ótima escolha! Te vejo lá! 🎉');
+        }
+    </script>
+</body>
+</html>
